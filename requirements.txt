@@ -1,0 +1,7 @@
+pandas
+numpy
+pandas-datareader
+scikit-learn
+tensorflow
+plotly
+joblib
