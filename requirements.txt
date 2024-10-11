@@ -1,7 +1,19 @@
+# Prediction Libraries
 pandas
 numpy
-pandas-datareader
 scikit-learn
 tensorflow
-plotly
 joblib
+matplotlib
+
+# Data Collection and Web Scraping
+yfinance
+bs4
+
+# Sentiment Analysis
+nltk
+vaderSentiment
+html5lib
+
+# Web Application
+django

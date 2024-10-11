@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockMonk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    {% load static %}
+    <script src='https://cdn.plot.ly/plotly-2.35.2.min.js'></script>
+    <script src="{% static 'scripts/script.js' %}"></script>
+    <style>
+        body{
+            background: rgb(35,51,0);
+            background: linear-gradient(45deg, rgba(68,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(35,51,0,1) 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .disclaimer{
+            position: absolute;
+            top: 10%;
+            left: 0%;
+            background-color: red;
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3vh;
+            width: 400vw;
+            animation: disclaimer-anim 18s linear infinite;
+            font-weight: 700;
+        }
+        @keyframes disclaimer-anim{
+            from {left: 0%;}
+            to {left: -250%;}
+        }
+        #boxes{
+            background: rgba(86, 86, 86, 0.319);
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 2px solid green;
+            padding-left: 1%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: start;
+        }
+        .selection{
+            width: 25vw;
+            height: 25vh;
+            position: absolute;
+            top: 15%;
+            left: 1%;
+        }
+        .technical{
+            width: 25vw;
+            height: 15vh;
+            position: absolute;
+            top: 41%;
+            left: 1%;
+        }
+        .sentimental{
+            width: 25vw;
+            height: 15vh;
+            position: absolute;
+            top: 57%;
+            left: 1%;
+        }
+        .prediction{
+            width: 25vw;
+            height: 25vh;
+            position: absolute;
+            top: 73%;
+            left: 1%;
+        }
+        .chart{
+            width: 72vw;
+            height: 83vh;
+            position: absolute;
+            top: 15%;
+            left: 27%;
+            padding-top: 1%;
+            padding-right: 1%;
+            padding-bottom: 1%;
+            border-radius: 8%;
+        }
+        .category-radio{
+            display: flex;
+            gap: 5px;
+        }
+        .selection form select{
+            background-color: transparent;
+            color: white;
+        }
+        #candlestickDiv{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <p class="disclaimer">This is just a trial setup, with limited stocks, trained upto 20-09-2024. The actual application has no bounds, but works same as this. This is just a project and should not be used for investing. The developers and contributors are not liable for any losses. This is just a trial setup, with limited stocks, trained upto 20-09-2024. The actual application has no bounds, but works same as this.</p>
+    <div class="selection" id="boxes">
+        <h2>Select the options:</h2>
+        <select id="StockTicker">
+            <option value="ITC.NS">ITC.NS</option>
+            <option value="TSLA">TSLA</option>
+            <option value="MARICO.NS">MARICO.NS</option>
+            <option value="CIPLA.BO">CIPLA.BO</option>
+        </select>
+        <div class="category-radio">
+            <input type="radio" id="open" name="selection" value="open">
+            <label for="open">Open</label><br>
+            
+            <input type="radio" id="close" name="selection" value="close">
+            <label for="close">Close</label><br>
+            
+            <input type="radio" id="high" name="selection" value="high">
+            <label for="high">High</label><br>
+            
+            <input type="radio" id="low" name="selection" value="low">
+            <label for="low">Low</label><br>
+        </div>
+        <button type="submit" onclick="getChartData()">Submit</button>
+    </div>
+    <div class="technical" id="boxes">
+        <h2>Technical Box</h2>
+    </div>
+    <div class="sentimental" id="boxes">
+        <h2>Sentiment Box</h2>
+    </div>
+    <div class="chart" id="boxes">
+        <div id="candlestickDiv"></div>
+    </div>
+    <div class="prediction" id="boxes">
+        <h2>Prediction Box</h2>
+        <p>Predicted (LSTM): 180.89</p>
+        <p>Predicted (LSTM + Sentiment): 201.89</p>
+        <p>Actual: 202.64</p>
+        <p>Accuracy: 99.62%</p>
+        <p>Error: 0.37%</p>
+    </div>
+</body>
+</html>

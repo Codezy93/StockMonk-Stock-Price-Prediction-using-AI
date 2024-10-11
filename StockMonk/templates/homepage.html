@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockMonk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .title{
+            display: flex;
+            font-size: 20vh;
+            margin-top: 25vh;
+            font-weight: 600;
+            font-family: "Archivo Black";
+            text-align: center;
+            justify-content: center;
+            color: white;
+        }
+        .title-letter{
+            margin-left: 2px;
+            margin-right: 2px;
+            z-index: 1;
+        }
+        .title-up{
+            z-index: 1;
+        }
+        body{
+            background: rgb(35,51,0);
+            background: linear-gradient(45deg, rgba(68,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(35,51,0,1) 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+        .chart-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: transparent;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            margin: 0%;
+            padding: 0%;
+            margin-top: 5%;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+        .description{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: white;
+            font-size: 3vh;
+            word-spacing: 10px;
+            letter-spacing: 2px;
+            font-family: 'Montserrat';
+            width: 80vw;
+            text-align: center;
+            transform: translate(-50%, 0%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .signup {
+            padding: 5%;
+            background-color: green;
+            border-radius: 15%;
+        }
+        .buttons-container{
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            display: flex;
+            gap: 20px;
+            z-index: 2;
+            text-align: center;
+        }
+        .buttons{
+            color:green;
+            background-color: transparent;
+            border: 2px solid green;
+            padding: 1%;
+            width: 35vh;
+            border-radius: 15px;
+            font-family: 'Montserrat';
+            font-size: 3vh;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .buttons:hover{
+            color: white;
+            background-color: green;
+            box-shadow: 0px 0px 5px green;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="title">
+        <p class="title-letter">S</p>
+        <p class="title-letter">T</p>
+        <p class="title-letter">O</p>
+        <p class="title-letter">C</p>
+        <p class="title-letter">K</p>
+        <p class="title-letter title-up">M</p>
+        <p class="title-letter title-up">O</p>
+        <p class="title-letter title-up">N</p>
+        <p class="title-letter title-up">K</p>
+    </div>
+    <span class="description">Most Advanced <strong>Stock Portfolio Management App</strong> and <strong>Stock Price Prediction </strong> that Integration Neural Networks and Sentiment Analysis</span>
+    <div class="buttons-container">
+        <a class="buttons" href="trial">Try for Free!</a>
+        <a class="buttons" href="demo">How it works?</a>
+    </div>
+    <div class="chart-container">
+        <canvas id="stockChart"></canvas>
+    </div>
+    <script>
+        function generateCanvas(){
+            const canvas = document.getElementById("stockChart");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+
+            const dataPoints = 50;
+            const data = [453, 460, 460, 461, 461, 466, 474, 475, 478, 478, 478, 480, 489, 490, 496, 508, 511, 515, 518, 520, 522, 526, 532, 538, 544, 547, 549, 555, 556, 560, 565, 565, 570, 572, 572, 575, 575, 575, 580, 582, 583, 586, 589, 594, 603, 605, 606, 608, 616, 618, 626, 628, 629, 631, 631, 634, 635, 638, 638, 648];
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, 'rgba(76, 175, 80, 0.4)');
+            gradient.addColorStop(1, 'rgba(76, 175, 80, 0)');
+
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height - data[0]);
+
+            for (let i = 1; i < data.length; i++) {
+                const x = (canvas.width / (data.length - 1)) * i;
+                const y = canvas.height - data[i];
+                ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = "#4CAF50";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(0, canvas.height);
+            ctx.closePath();
+
+            ctx.fillStyle = gradient;
+            ctx.fill();
+        }
+        generateCanvas()
+    </script>
+</body>
+</html>

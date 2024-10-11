@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockMonk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .title{
+            display: flex;
+            font-size: 20vh;
+            margin-top: 5vh;
+            font-weight: 600;
+            font-family: "Archivo Black";
+            text-align: center;
+            justify-content: center;
+            color: white;
+        }
+        .title-letter{
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        body{
+            background: rgb(35,51,0);
+            background: linear-gradient(45deg, rgba(68,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(35,51,0,1) 100%);
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Montserrat';
+        }
+        .description{
+            position: absolute;
+            top: 30%;
+            left: 3%;
+            color: white;
+            font-size: 2.25vh;
+            word-spacing: 10px;
+            letter-spacing: 2px;
+            font-family: 'Montserrat';
+            width: 94vw;
+            text-align: justify;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        .navbar {
+            z-index: 1;
+            width: 100vw;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.5% 2.5%;
+        }
+
+        .title-link {
+            font-size: 3vh;
+            font-family: 'Archivo Black', sans-serif;
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
+        }
+
+        .links{
+            display: flex;
+            gap: 25px;
+        }
+
+        .auth-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .links a, .auth-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 2vh;
+            white-space: nowrap;
+        }
+
+        .links a:hover, .auth-links a:hover {
+            text-shadow: 0px 0px 3px white;
+        }
+        .signup {
+            padding: 5%;
+            background-color: green;
+            border-radius: 15%;
+        }
+        .credits{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: 'Montserrat';
+            color: white;
+            font-size: 3vh;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="title">
+        <p class="title-letter">S</p>
+        <p class="title-letter">T</p>
+        <p class="title-letter">O</p>
+        <p class="title-letter">C</p>
+        <p class="title-letter">K</p>
+        <p class="title-letter">M</p>
+        <p class="title-letter">O</p>
+        <p class="title-letter">N</p>
+        <p class="title-letter">K</p>
+    </div>
+    <div class="credits">
+        Made by @Codezy93 (Viraj Paradkar)
+        <div class="credit-links">
+            <a href="https://www.github.com/Codezy93", target="_blank"><img width="48" height="48" src="https://img.icons8.com/fluency/48/github.png" alt="github"/></a>
+            <a href="https://x.com/Codezy93", target="_blank"><img width="48" height="48" src="https://img.icons8.com/fluency/48/twitterx--v1.png" alt="twitterx--v1"/></a>
+            <a href="https://www.linkedin.com/in/viraj-paradkar/", target="_blank"><img width="48" height="48" src="https://img.icons8.com/fluency/48/linkedin.png" alt="linkedin"/></a>
+        </div>
+    </div>
+</body>
+</html>
